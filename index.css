@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.slider {
+    position: relative;
+}
+.vegetables img {
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 10px;
+}
+
+.description {
+    display: inline-block;
+}
+
+.vegetables .veg {
+    width: 18%;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px;
+    background-color: white;
+}
+.vegetables {
+    position: relative;
+}
+.list {
+    position: absolute;
+    text-align: center;
+    top: 10px;
+    vertical-align: top;
+}
+input {
+    position: absolute;
+    top: 350px;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+input:nth-of-type(1) {
+    right: 75px;
+    left: 0;
+    margin: auto;
+}
+input:nth-of-type(2) {
+    right: 45px;
+    left: 0;
+    margin: auto;
+}
+input:nth-of-type(3) {
+    right: 15px;
+    left: 0;
+    margin: auto;
+}
+input:nth-of-type(4) {
+    right: -15px;
+    left: 0;
+    margin: auto;
+}
+input:nth-of-type(5) {
+    right: -45px;
+    left: 0;
+    margin: auto;
+}
+input:nth-of-type(6) {
+    right: -75px;
+    left: 0;
+    margin: auto;
+}
+p {
+    text-indent: 1em;
+}
+/* логика радио кнопок */
+.list {
+    visibility: hidden;
+}
+.slider #list-1:checked ~ .vegetables .list {
+visibility:hidden;
+}
+.slider #list-1:checked ~ .vegetables .list-1 {
+visibility:visible;
+}
+.slider #list-2:checked ~ .vegetables .list-2 {
+    visibility:visible;
+}
+.slider #list-3:checked ~ .vegetables .list-3 {
+    visibility:visible;
+}
+.slider #list-4:checked ~ .vegetables .list-4 {
+    visibility:visible;
+}
+.slider #list-5:checked ~ .vegetables .list-5 {
+    visibility:visible;
+}
+.slider #list-6:checked ~ .vegetables .list-6 {
+    visibility:visible;
+}
+/* поведение при наведении */
+.veg .description{
+display: none;
+}
+.veg:hover {
+    box-shadow: 1px 1px 10px gray,
+                -1px -1px 10px gray;
+    border-radius: 2px;
+}
+.veg:hover .description {
+    display: inline-block;
+    text-align: justify;
+    padding: 10px;
+}
+
+/* поведение при клике */
+.overlay {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    display: none;
+    /* фон затемнения */
+    background-color: rgba(0, 0, 0, 0.65);
+    position: fixed; /* фиксированное позиционирование */
+    cursor: default; /* тип курсора */   
+}
+
+.overlay:target {
+    display: block;
+}
+
+.full-mode-pic {
+    display: none;
+}
+
+.overlay:target + .veg .full-mode-pic {
+    height: 90vh;
+    width: auto;
+    z-index: 40;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 10px;
+    display: block;
+}
+.overlay:target + .veg .description {
+    display: none;
+}
+
+.overlay:target + .veg {
+    box-shadow: none;
+}
+
+.close {
+    position: absolute;
+    text-align: center;
+    display: none;
+    right: 32px;
+    top: 32px;
+    width: 32px;
+    height: 32px;
+    }
+
+    .overlay:target~.close {
+        top: 20px;
+        right: 15px;
+       position: absolute;
+       z-index: 30;
+       display: inline;
+       text-decoration: none;
+       }
+
+        .close:before, .close:after {
+        position: absolute;
+        left: 15px;
+        content: ' ';
+        height: 33px;
+        width: 4px;
+        background-color: white;
+        }
+        .close:before {
+        transform: rotate(45deg);
+        }
+        .close:after {
+        transform: rotate(-45deg);
+        }
